@@ -41,7 +41,7 @@ const Signup = () => {
                     <input type="password" id="password" onChange={handleChange} />
                 </div>
                 <div className="input-field">
-                    <button className="btn-pink lighten-1 z-depth-0">Submit</button>
+                    <button className="btn amber">Submit</button>
                 </div>
             </form>
         </div>

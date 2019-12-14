@@ -31,7 +31,7 @@ const Createproject = () => {
                     <textarea className="materialize-textarea" type="text" id="content" onChange={handleChange} />
                 </div>
                 <div className="input-field">
-                    <button className="btn-pink lighten-1 z-depth-0">Create</button>
+                    <button className="btn amber">Create</button>
                 </div>
             </form>
         </div>

@@ -6,13 +6,13 @@ const Signedinlinks = () => {
         <div>
             <ul className="right">
                 <li>
-                    <NavLink to="/">New Project</NavLink>
+                    <NavLink to="/create">New Project</NavLink>
                 </li>
                 <li>
                     <NavLink to="/">Log Out</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/" className="btn btn-floating pink lighten-1">MS</NavLink>
+                    <NavLink to="/" className="btn btn-floating amber grey-text text-darken-3">MS</NavLink>
                 </li>
             </ul>
         </div>
