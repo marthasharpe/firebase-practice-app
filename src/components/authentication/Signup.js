@@ -23,7 +23,7 @@ const Signup = () => {
     return (
         <div className="container">
             <form onSubmit={handleSubmit} className="white">
-                <h5 className="grey-text text-darken-3">Sign Up</h5>
+                <h5 className="grey-text text-darken-4">Sign Up</h5>
                 <div className="input-field">
                     <label htmlFor="firstName">First Name</label>
                     <input type="text" id="firstName" onChange={handleChange} />
@@ -41,7 +41,7 @@ const Signup = () => {
                     <input type="password" id="password" onChange={handleChange} />
                 </div>
                 <div className="input-field">
-                    <button className="btn amber">Submit</button>
+                    <button className="btn amber grey-text text-darken-4">Submit</button>
                 </div>
             </form>
         </div>
