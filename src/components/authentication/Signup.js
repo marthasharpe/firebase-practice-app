@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { signUp } from '../../store/actions/authActions';
 
 const Signup = (props) => {
     const [values, setValues] = useState({
@@ -19,10 +20,10 @@ const Signup = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(values);
+        props.signUp(values);
     }
 
-    const { authError, auth } = props;
+    const { auth, authError } = props;
     if (auth.uid) return <Redirect to='/' />
 
     return (
@@ -46,7 +47,10 @@ const Signup = (props) => {
                     <input type="password" id="password" onChange={handleChange} />
                 </div>
                 <div className="input-field">
-                    <button className="btn amber grey-text text-darken-4">Submit</button>
+                    <button className="btn amber grey-text text-darken-4">Sign Up</button>
+                    <div className="red-text center">
+                        { authError ? <p>{authError}</p> : null }
+                    </div>
                 </div>
             </form>
         </div>
@@ -56,7 +60,14 @@ const Signup = (props) => {
 const mapStateToProps = (state) => {
     return {
         auth: state.firebase.auth,
+        authError: state.auth.authError
     }
 }
 
-export default connect(mapStateToProps)(Signup);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signUp: newUser => dispatch(signUp(newUser))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
