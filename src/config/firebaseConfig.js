@@ -2,9 +2,10 @@
   import 'firebase/firestore';
   import 'firebase/auth';
   
+  const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
   // Your web app's Firebase configuration
   var firebaseConfig = {
-    apiKey: "AIzaSyADKKwb-FQVO27o06r4Tct-P4m_bOqJQxo",
+    apiKey: REACT_APP_API_KEY,
     authDomain: "fir-practice-app-69e4c.firebaseapp.com",
     databaseURL: "https://fir-practice-app-69e4c.firebaseio.com",
     projectId: "fir-practice-app-69e4c",
@@ -15,6 +16,6 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  firebase.firestore().settings({ timestampsInSnapshots: true });
+  firebase.firestore();
 
   export default firebaseConfig;
