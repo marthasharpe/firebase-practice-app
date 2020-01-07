@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { signIn } from '../../store/actions/authActions';
 import { Redirect } from 'react-router-dom';
+import { firestoreConnect, withFirestore } from 'react-redux-firebase';
+import { compose } from 'redux';
 
 const Signin = (props) => {
     const [values, setValues] = useState({
@@ -60,4 +62,10 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signin);
+export default compose(
+    // firestoreConnect([
+    //     { collection: 'users' }
+    // ]),
+    withFirestore,
+    connect(mapStateToProps, mapDispatchToProps)
+)(Signin);

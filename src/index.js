@@ -2,12 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 import rootReducer from './store/reducers/rootReducer';
 import thunk from 'redux-thunk';
-import { createFirestoreInstance, getFirestore, reduxFirestore } from 'redux-firestore';
-import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase';
+import {
+    createFirestoreInstance,
+    getFirestore,
+    reduxFirestore
+} from 'redux-firestore';
+import {
+    ReactReduxFirebaseProvider,
+    getFirebase,
+    reactReduxFirebase
+} from 'react-redux-firebase';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -40,12 +49,12 @@ firebase.firestore();
 
 const store = createStore(
     rootReducer,
-    compose(
+    composeWithDevTools(
         applyMiddleware(
             thunk.withExtraArgument({ getFirestore, getFirebase })
         ),
         reduxFirestore(firebase, firebaseConfig),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+        reactReduxFirebase(firebaseConfig, rrfConfig),
     )
 );
 
@@ -53,7 +62,7 @@ const rrfProps = {
    firebase,
    config: rrfConfig,
    dispatch: store.dispatch,
-   createFirestoreInstance // <- needed if using firestore
+   createFirestoreInstance
 }
 
 ReactDOM.render(
